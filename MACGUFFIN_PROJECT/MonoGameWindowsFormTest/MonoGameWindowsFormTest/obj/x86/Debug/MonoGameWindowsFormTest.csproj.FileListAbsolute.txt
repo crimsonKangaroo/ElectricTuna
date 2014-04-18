@@ -1,0 +1,13 @@
+G:\Group Project\MonoGameWindowsFormTest\MonoGameWindowsFormTest\bin\WindowsGL\Debug\SDL.dll
+G:\Group Project\MonoGameWindowsFormTest\MonoGameWindowsFormTest\bin\WindowsGL\Debug\MonoGameWindowsFormTest.exe
+G:\Group Project\MonoGameWindowsFormTest\MonoGameWindowsFormTest\bin\WindowsGL\Debug\MonoGameWindowsFormTest.pdb
+G:\Group Project\MonoGameWindowsFormTest\MonoGameWindowsFormTest\bin\WindowsGL\Debug\Lidgren.Network.dll
+G:\Group Project\MonoGameWindowsFormTest\MonoGameWindowsFormTest\bin\WindowsGL\Debug\MonoGame.Framework.dll
+G:\Group Project\MonoGameWindowsFormTest\MonoGameWindowsFormTest\bin\WindowsGL\Debug\OpenTK.dll
+G:\Group Project\MonoGameWindowsFormTest\MonoGameWindowsFormTest\bin\WindowsGL\Debug\Tao.Sdl.dll
+G:\Group Project\MonoGameWindowsFormTest\MonoGameWindowsFormTest\obj\x86\Debug\MonoGameWindowsFormTest.csprojResolveAssemblyReference.cache
+G:\Group Project\MonoGameWindowsFormTest\MonoGameWindowsFormTest\obj\x86\Debug\MonoGameWindowsFormTest.Form1.resources
+G:\Group Project\MonoGameWindowsFormTest\MonoGameWindowsFormTest\obj\x86\Debug\MonoGameWindowsFormTest.csproj.GenerateResource.Cache
+G:\Group Project\MonoGameWindowsFormTest\MonoGameWindowsFormTest\obj\x86\Debug\MonoGameWindowsFormTest.exe
+G:\Group Project\MonoGameWindowsFormTest\MonoGameWindowsFormTest\obj\x86\Debug\MonoGameWindowsFormTest.pdb
+F:\Group Project\MonoGameWindowsFormTest\MonoGameWindowsFormTest\obj\x86\Debug\MonoGameWindowsFormTest.exe

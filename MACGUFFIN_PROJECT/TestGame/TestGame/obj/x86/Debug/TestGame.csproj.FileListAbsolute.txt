@@ -1,0 +1,57 @@
+G:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\SDL.dll
+G:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\TestGame.exe
+G:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\TestGame.pdb
+G:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\Lidgren.Network.dll
+G:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\MonoGame.Framework.dll
+G:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\OpenTK.dll
+G:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\Tao.Sdl.dll
+G:\Group Project\TestGame\TestGame\obj\x86\Debug\TestGame.csprojResolveAssemblyReference.cache
+G:\Group Project\TestGame\TestGame\obj\x86\Debug\TestGame.exe
+G:\Group Project\TestGame\TestGame\obj\x86\Debug\TestGame.pdb
+G:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\Content\Enterprise.xnb
+F:\Group Project\TestGame\TestGame\obj\x86\Debug\TestGame.exe
+F:\Group Project\TestGame\TestGame\obj\x86\Debug\TestGame.pdb
+F:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\SDL.dll
+F:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\Content\Enterprise.xnb
+F:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\TestGame.exe
+F:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\TestGame.pdb
+F:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\Lidgren.Network.dll
+F:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\MonoGame.Framework.dll
+F:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\OpenTK.dll
+F:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\Tao.Sdl.dll
+F:\Group Project\TestGame\TestGame\obj\x86\Debug\TestGame.csprojResolveAssemblyReference.cache
+F:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\Content\D7.xnb
+J:\Group Project\TestGame\TestGame\obj\x86\Debug\TestGame.exe
+J:\Group Project\TestGame\TestGame\obj\x86\Debug\TestGame.pdb
+J:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\SDL.dll
+J:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\Content\D7.xnb
+J:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\Content\Enterprise.xnb
+J:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\TestGame.exe
+J:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\TestGame.pdb
+J:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\Lidgren.Network.dll
+J:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\MonoGame.Framework.dll
+J:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\OpenTK.dll
+J:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\Tao.Sdl.dll
+J:\Group Project\TestGame\TestGame\obj\x86\Debug\TestGame.csprojResolveAssemblyReference.cache
+J:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\Content\baton.xnb
+J:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\Content\block1.xnb
+J:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\Content\crystal.xnb
+J:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\Content\player1.xnb
+J:\Group Project\TestGame\TestGame\bin\WindowsGL\Debug\Content\Arial.xnb
+F:\igm\semester2\MACGUFFIN_PROJECT\TestGame\TestGame\obj\x86\Debug\TestGame.exe
+F:\igm\semester2\MACGUFFIN_PROJECT\TestGame\TestGame\obj\x86\Debug\TestGame.pdb
+F:\igm\semester2\MACGUFFIN_PROJECT\TestGame\TestGame\bin\WindowsGL\Debug\SDL.dll
+F:\igm\semester2\MACGUFFIN_PROJECT\TestGame\TestGame\bin\WindowsGL\Debug\Content\D7.xnb
+F:\igm\semester2\MACGUFFIN_PROJECT\TestGame\TestGame\bin\WindowsGL\Debug\Content\Enterprise.xnb
+F:\igm\semester2\MACGUFFIN_PROJECT\TestGame\TestGame\bin\WindowsGL\Debug\Content\baton.xnb
+F:\igm\semester2\MACGUFFIN_PROJECT\TestGame\TestGame\bin\WindowsGL\Debug\Content\block1.xnb
+F:\igm\semester2\MACGUFFIN_PROJECT\TestGame\TestGame\bin\WindowsGL\Debug\Content\crystal.xnb
+F:\igm\semester2\MACGUFFIN_PROJECT\TestGame\TestGame\bin\WindowsGL\Debug\Content\player1.xnb
+F:\igm\semester2\MACGUFFIN_PROJECT\TestGame\TestGame\bin\WindowsGL\Debug\Content\Arial.xnb
+F:\igm\semester2\MACGUFFIN_PROJECT\TestGame\TestGame\bin\WindowsGL\Debug\TestGame.exe
+F:\igm\semester2\MACGUFFIN_PROJECT\TestGame\TestGame\bin\WindowsGL\Debug\TestGame.pdb
+F:\igm\semester2\MACGUFFIN_PROJECT\TestGame\TestGame\bin\WindowsGL\Debug\Lidgren.Network.dll
+F:\igm\semester2\MACGUFFIN_PROJECT\TestGame\TestGame\bin\WindowsGL\Debug\MonoGame.Framework.dll
+F:\igm\semester2\MACGUFFIN_PROJECT\TestGame\TestGame\bin\WindowsGL\Debug\OpenTK.dll
+F:\igm\semester2\MACGUFFIN_PROJECT\TestGame\TestGame\bin\WindowsGL\Debug\Tao.Sdl.dll
+F:\igm\semester2\MACGUFFIN_PROJECT\TestGame\TestGame\obj\x86\Debug\TestGame.csprojResolveAssemblyReference.cache
