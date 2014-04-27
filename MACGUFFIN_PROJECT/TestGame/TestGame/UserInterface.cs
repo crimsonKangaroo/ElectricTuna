@@ -24,38 +24,21 @@ namespace TestGame
         /// </summary>
         
         // attributes
-        private int crystalCount;
+        Player player;
         private int stunCharge;
         int stunCountdown;
         bool stunIsActive;
-        Texture2D testCharacter;
-
-        // constructor (each player will need their own Counter and Meter objects)
-        public UserInterface()
+        
+         // constructor (each player will need their own Counter and Meter objects)
+        public UserInterface(Player pl)
         {
-            crystalCount = 0;
+            player = pl;
+            player.MacGuffinCount = 0;
             stunCharge = 0;
             stunCountdown = 100;
             stunIsActive = false;
         }
         
-        // attributes as properties
-        public Texture2D Character
-        {
-            get { return testCharacter; }
-            set { testCharacter = value; }
-        }
-
-        public int CrystalCount
-        {
-            get { return crystalCount; }
-            set 
-            { 
-                if (value < 0) crystalCount = 0;
-                else crystalCount = value;
-            }
-        }
-
         public int StunCharge
         {
             get { return stunCharge; }
@@ -82,6 +65,15 @@ namespace TestGame
             stunCharge++;
             stunCountdown--;
 
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Texture2D guffin, Texture2D baton, SpriteFont text)
+        {
+            int shift = player.PlayerNum * 83;
+
+            spriteBatch.Draw(guffin, new Vector2(167 + shift, 450), player.PlayerColor);
+            spriteBatch.DrawString(text, "" + player.MacGuffinCount, new Vector2(187 + shift, 445), Color.Black);
+            spriteBatch.Draw(baton, new Vector2(162 + shift, 398), Color.White);
         }
     }
 }
