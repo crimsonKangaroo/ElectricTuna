@@ -27,18 +27,11 @@ namespace TestGame
         Random rgen = new Random();
 
 
-        // will hold Texture2D sprite and position
-        Texture2D ship;
+        // will hold sprite position (The texture is now held by the Player class instead)
         public Rectangle place;
-
-        Texture2D ship2;
         public Rectangle place2;
-
-        Texture2D ship3;
-        Rectangle place3;
-
-        Texture2D ship4;
-        Rectangle place4;
+        public Rectangle place3;
+        public Rectangle place4;
 
         KeyboardState kState;
 
@@ -58,8 +51,15 @@ namespace TestGame
         int playerY1;
         int playerY2;
 
-        // Player 1 
-        UserInterface P1;
+        // Players & respective interfaces
+        Player player1;
+        UserInterface user1;
+        Player player2;
+        UserInterface user2;
+        Player player3;
+        UserInterface user3;
+        Player player4;
+        UserInterface user4;
         
         // Textures, sprites, etc.
         Texture2D baton;
@@ -176,19 +176,12 @@ namespace TestGame
         // to be called in Update method and contains movement & jumping
         public void Move()
         {
-            
-
-
             kState = Keyboard.GetState();
 
             if (kState.IsKeyDown(Keys.A)) place.X -= 6;
-
             if (kState.IsKeyDown(Keys.D)) place.X += 6;
 
-
-
             // jumping 
-            
             if (jumping)
             {
                 place.Y += jumpSpeed;
@@ -212,8 +205,6 @@ namespace TestGame
                 {
                     jumpSpeed = playerY1;
                 }
-                
-
             }
             else
             {
@@ -252,9 +243,6 @@ namespace TestGame
         }
 
 
-
-
-
         // will be put in Update Method
         // Will add Macguffins to the board
 
@@ -262,26 +250,12 @@ namespace TestGame
         // IT DOESNT EVEN CANGE THE PLACE
         public void AddGuffin()
         {
-
             if (guffinOn1 == false)
             {
-                
-
                 guffinPlace = new Rectangle(rgen.Next(1,700),rgen.Next(200,300),11,18);
-
                 guffinOn1 = true;
             }
-
-
         }
-
-        
-
-
-
-
-
-
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -302,9 +276,24 @@ namespace TestGame
             // initialize Jumping attributes
             startY = place.Y;
             jumpSpeed = 0;
+            
+            // player loading - for this logic, they just sort of move together in a conga line
+            // until the seperate controls are 
+            player1 = new Player(1, Color.Red);
+            user1 = new UserInterface(player1);
+            place = new Rectangle(400, 300, 28, 62);
 
-            P1 = new UserInterface();
-            SpawnCrystal();
+            player2 = new Player(2, Color.Blue);
+            user2 = new UserInterface(player2);
+            place2 = new Rectangle(475, 300, 28, 62);
+
+            player3 = new Player(3, Color.Green);
+            user3 = new UserInterface(player3);
+            place3 = new Rectangle(550, 300, 28, 62);
+
+            player4 = new Player(4, Color.Yellow);
+            user4 = new UserInterface(player4);
+            place4 = new Rectangle(625, 300, 28, 62);
 
             //ReadMap("map1.txt");
             /* should be unneccessary with the ReadMap Method
@@ -330,8 +319,10 @@ namespace TestGame
             P1.Character = Content.Load<Texture2D>("player1");
             text = Content.Load<SpriteFont>("Arial");   
 
-
-            ship = Content.Load<Texture2D>("player1");
+            player1.Sprite = Content.Load<Texture2D>("player1");
+            player2.Sprite = Content.Load<Texture2D>("player1");
+            player3.Sprite = Content.Load<Texture2D>("player1");
+            player4.Sprite = Content.Load<Texture2D>("player1");
 
             guffin = Content.Load<Texture2D>("crystal");
             
@@ -363,18 +354,32 @@ namespace TestGame
            
             // calls the move method that has left and right movement and jumping
             Move();
-
-
-            
-
             AddGuffin();
 
             // detect whether the character has intersected a getCrystal
-            Boolean crysCollision = getCrystal.Intersects(place);
-            if (crysCollision == true)
+            if (place.Intersects(guffinPlace))
             {
-                SpawnCrystal();
-                P1.CrystalCount++;
+                player1.MacGuffinCount++;
+                guffinPlace.Location.Equals(null); 
+                guffinOn1 = false;
+            }
+            if (place2.Intersects(guffinPlace))
+            {
+                player2.MacGuffinCount++;
+                guffinPlace.Location.Equals(null);
+                guffinOn1 = false;
+            }
+            if (place3.Intersects(guffinPlace))
+            {
+                player3.MacGuffinCount++;
+                guffinPlace.Location.Equals(null);
+                guffinOn1 = false;
+            }
+            if (place4.Intersects(guffinPlace))
+            {
+                player4.MacGuffinCount++;
+                guffinPlace.Location.Equals(null);
+                guffinOn1 = false;
             }
 
             // update the baton timer, if necessary (doesn't do anything for now)
@@ -382,20 +387,17 @@ namespace TestGame
             {
                 P1.ChargeStun();
             }
+            
+            // TEMPORARY TESTING MEASURES - players 2-4 move with player 1 
+            // (change this once separate controls)
+            place2.X = place.X + 30;
+            place2.Y = place.Y;
 
+            place3.X = place.X + 60;
+            place3.Y = place.Y;
 
-            // collision with jumping doesnt work
-            if (place.Intersects(guffinPlace))
-            {
-
-                guffinPlace.Location.Equals(null);
-
-               
-                guffinOn1 = false;
-            }
-
-
-
+            place4.X = place.X + 90;
+            place4.Y = place.Y;
 
             // TODO: Add your update logic here
 
@@ -423,28 +425,19 @@ namespace TestGame
                 spriteBatch.Draw(block, wall, Color.White);
             }
 
+            // Draw the players
+            spriteBatch.Draw(player1.Sprite, place, Color.White);
+            spriteBatch.Draw(player2.Sprite, place2, player2.PlayerColor);
+            spriteBatch.Draw(player3.Sprite, place3, player3.PlayerColor);
+            spriteBatch.Draw(player4.Sprite, place4, player4.PlayerColor);
+            
             /// <summary>
             /// Display for P1 - P4
-            /// Right now, they all use P1's values for test purposes
             /// </summary>
-            spriteBatch.Draw(guffin, new Vector2(250, 450), Color.Red);
-            spriteBatch.DrawString(text, "" + P1.CrystalCount, new Vector2(270, 445), Color.Black);
-            spriteBatch.Draw(baton, new Vector2(245, 398), Color.White);
-
-            // P2
-            spriteBatch.Draw(guffin, new Vector2(333, 450), Color.Blue);
-            spriteBatch.DrawString(text, "" + P1.CrystalCount, new Vector2(353, 445), Color.Black);
-            spriteBatch.Draw(baton, new Vector2(328, 398), Color.White);
-
-            // P3
-            spriteBatch.Draw(guffin, new Vector2(416, 450), Color.Green);
-            spriteBatch.DrawString(text, "" + P1.CrystalCount, new Vector2(436, 445), Color.Black);
-            spriteBatch.Draw(baton, new Vector2(411, 398), Color.White);
-
-            // P4
-            spriteBatch.Draw(guffin, new Vector2(500, 450), Color.Yellow);
-            spriteBatch.DrawString(text, "" + P1.CrystalCount, new Vector2(520, 445), Color.Black);
-            spriteBatch.Draw(baton, new Vector2(495, 398), Color.White);
+            user1.Draw(spriteBatch, guffin, baton, text);
+            user2.Draw(spriteBatch, guffin, baton, text);
+            user3.Draw(spriteBatch, guffin, baton, text);
+            user4.Draw(spriteBatch, guffin, baton, text);
 
             spriteBatch.End();
 
