@@ -1,0 +1,117 @@
+using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Storage;
+using Microsoft.Xna.Framework.GamerServices;
+using System.Threading;
+using System.IO;
+
+namespace TestGame
+{
+    class MainMenuScreen: GameScreen
+    {
+        // list of menu options
+        List<String> menuEntries = new List<String>();
+        int selectedEntry = 0;
+        string menuTitle;
+        KeyboardState kState;
+
+        protected List<String> MenuEntries
+        {
+            get { return menuEntries; }
+        }
+
+        // constructor
+        public MainMenuScreen(string title)
+        {
+            this.menuTitle = title;
+            menuEntries.Add("Start");
+            menuEntries.Add("Exit");
+        }
+
+        /// <summary>
+        /// Responds to user input, changing the selected entry and accepting
+        /// or cancelling the menu.
+        /// At some point, we'll probably want to restrict control to just
+        /// Player 1, but since my computer doesn't seem to recognize the idea
+        /// of multiple slots, for testing purposes it accepts any game controller.
+        /// </summary>
+        public override void HandleInput(GamePadState input, PlayerIndex? player)
+        {
+
+            kState = Keyboard.GetState();
+
+            // Move to the previous menu entry?
+            if (input.ThumbSticks.Left.Y <= -.5 || kState.IsKeyDown(Keys.W))
+            {
+                selectedEntry--;
+
+                if (selectedEntry < 0)
+                    selectedEntry = menuEntries.Count - 1;
+            }
+
+            // Move to the next menu entry?
+            if (input.ThumbSticks.Left.Y >= .5 || kState.IsKeyDown(Keys.S))
+            {
+                selectedEntry++;
+
+                if (selectedEntry >= menuEntries.Count)
+                    selectedEntry = 0;
+            }
+
+            // select an entry?
+            if (input.IsButtonDown(Buttons.A) || kState.IsKeyDown(Keys.Enter))
+            {
+                OnSelectEntry(selectedEntry, player);
+            }
+        }
+
+        /// <summary>
+        /// Handler for when the user has chosen a menu entry.
+        /// </summary>
+        protected virtual void OnSelectEntry(int entryIndex, PlayerIndex? playerIndex)
+        {
+            switch (menuEntries[entryIndex])
+            {
+                case "Start":
+                    ScreenState = ScreenState.Hidden;
+                    ScreenManager.RemoveScreen(this);
+                    break;
+                case "Exit":
+                    break;
+            }
+        }
+
+        public override void Update(GameTime gameTime, bool otherScreenHasFocus)
+        {
+            base.Update(gameTime, otherScreenHasFocus);
+        }
+
+        public override void Draw(GameTime gameTime)
+        {
+            GraphicsDevice graphics = ScreenManager.GraphicsDevice;
+            SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
+            SpriteFont font = ScreenManager.Font;
+
+            graphics.Clear(Color.CornflowerBlue);
+
+            spriteBatch.Begin();
+            for (int i = 0; i < menuEntries.Count; i++)
+            {
+                Vector2 line = new Vector2((graphics.Viewport.Width / 2) - 50, 200 + (i*50));
+                if (i == selectedEntry)
+                {
+                    spriteBatch.DrawString(font, menuEntries[i], line, Color.Red);
+                }
+                else spriteBatch.DrawString(font, menuEntries[i], line, Color.Gray);
+            }
+
+            spriteBatch.End();
+
+            base.Draw(gameTime);
+        }
+    }
+}
