@@ -261,7 +261,6 @@ namespace TestGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
             baton = Content.Load<Texture2D>("baton");
             block = Content.Load<Texture2D>("block1");
-            P1.Character = Content.Load<Texture2D>("player1");
             text = Content.Load<SpriteFont>("Arial");   
 
             player1.Sprite = Content.Load<Texture2D>("player1");
@@ -330,12 +329,6 @@ namespace TestGame
                 guffinPlace.Location.Equals(null);
                 guffinOn1 = false;
             }
-
-            // update the baton timer, if necessary (doesn't do anything for now)
-            if (P1.StunCharge < 100)
-            {
-                P1.ChargeStun();
-            }
             
             // TEMPORARY TESTING MEASURES - players 2-4 move with player 1 
             // (change this once separate controls)
@@ -369,11 +362,6 @@ namespace TestGame
                 otherScreens[0].Draw(gameTime);
                 goto DrawEnd;
             }
-
-            spriteBatch.Begin();
-            spriteBatch.Draw(ship, place, Color.White);
-            spriteBatch.Draw(guffin, guffinPlace, Color.White);
-            spriteBatch.Draw(guffin, guffinPlace2, Color.White);
             
             // make a bunch of blocks
             foreach (Rectangle wall in walls)
