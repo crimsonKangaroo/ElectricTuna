@@ -47,10 +47,8 @@ namespace TestGame
             // Move to the previous menu entry?
             if (input.ThumbSticks.Left.Y <= -.5 || kState.IsKeyDown(Keys.W))
             {
-                selectedEntry--;
-
-                if (selectedEntry < 0)
-                    selectedEntry = menuEntries.Count - 1;
+                selectedEntry --;
+                if (selectedEntry =< 0) selectedEntry = 0;
             }
 
             // Move to the next menu entry?
@@ -59,7 +57,7 @@ namespace TestGame
                 selectedEntry++;
 
                 if (selectedEntry >= menuEntries.Count)
-                    selectedEntry = 0;
+                    selectedEntry = menuEntries.Count - 1;
             }
 
             // select an entry?
