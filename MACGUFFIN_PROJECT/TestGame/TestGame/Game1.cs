@@ -72,34 +72,6 @@ namespace TestGame
 
 
         public bool guffinOn1 = false;
-        bool guffinOn2 = false;
-
-        /// <summary>
-        /// Method to spawn new getCrystals. Uses a randomized switch case to put the crystal at one of the spawn points.
-        /// Once the map editor is functional, the spawn points should be changeable
-        /// </summary>
-        public void SpawnCrystal()
-        {
-            Random rgen = new Random();
-            switch (rgen.Next(5) + 1)
-            {
-                case 1:
-                    getCrystal = new Rectangle(100, 50, 11, 18);
-                    return;
-                case 2:
-                    getCrystal = new Rectangle(700, 50, 11, 18);
-                    return;
-                case 3:
-                    getCrystal = new Rectangle(400, 250, 11, 18);
-                    return;
-                case 4:
-                    getCrystal = new Rectangle(100, 400, 11, 18);
-                    return;
-                case 5:
-                    getCrystal = new Rectangle(700, 400, 11, 18);
-                    return;
-            }
-        }
 
 
         public Game1()
@@ -187,13 +159,6 @@ namespace TestGame
                 place.Y += jumpSpeed;
                 jumpSpeed += 1;
 
-
-               /* if (place.Y >= startY)
-                {
-                    place.Y = startY;
-                    jumping = false;
-                }*/
-
                 playerY1 = jumpSpeed;
 
                 if (place.Intersects(guffinPlace2))
@@ -215,31 +180,6 @@ namespace TestGame
                     jumpSpeed = -20;
                 }
             }
-
-
-            /*
-            if (jumping)
-            {
-                place.Y += jumpSpeed;
-                jumpSpeed += 1;
-                if (place.Y >= startY)
-                {
-                    place.Y = startY;
-                    jumping = false;
-                }
-            }
-            else
-            {
-
-                if (kState.IsKeyDown(Keys.Space))
-                {
-                    jumping = true;
-                    jumpSpeed = -14;
-                }
-            }
-
-            */
-
         }
 
 
