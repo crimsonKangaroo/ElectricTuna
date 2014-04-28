@@ -21,7 +21,8 @@ namespace TestGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        //Character chrctr = new Character();
+        ScreenManager screenManager; // manages non-gameplay screens
+        GameScreen[] otherScreens; // matrix of non-gameplay screens (Even though there's only the one for now)
 
 
         Random rgen = new Random();
@@ -79,6 +80,9 @@ namespace TestGame
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            
+            screenManager = new ScreenManager(this);
+            Random rgen = new Random();
         }
 
         /*
@@ -209,8 +213,9 @@ namespace TestGame
             place = new Rectangle(400, 300, 28, 62);
             guffinPlace2 = new Rectangle(600, 300, 11, 18);
 
-            // set guffin location equal to players y
-            //guffinPlace = new Rectangle(450, 300, 50, 50);
+            screenManager.AddScreen(new MainMenuScreen("Menu"), PlayerIndex.One);
+            screenManager.Initialize();
+            otherScreens = screenManager.GetScreens();
 
 
             // initialize Jumping attributes
@@ -218,7 +223,7 @@ namespace TestGame
             jumpSpeed = 0;
             
             // player loading - for this logic, they just sort of move together in a conga line
-            // until the seperate controls are 
+            // until the seperate controls are implemented
             player1 = new Player(1, Color.Red);
             user1 = new UserInterface(player1);
             place = new Rectangle(400, 300, 28, 62);
@@ -288,8 +293,12 @@ namespace TestGame
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
-
+                
+                screenManager.Update(gameTime);
+            if (otherScreens[0].IsActive == true)
+            {
+                goto UpdateEnd;
+            }
             kState = Keyboard.GetState();
            
             // calls the move method that has left and right movement and jumping
@@ -339,8 +348,10 @@ namespace TestGame
             place4.X = place.X + 90;
             place4.Y = place.Y;
 
-            // TODO: Add your update logic here
-
+            // TODO: Add update logic here
+            // marker for the goto, to allow the program to skip unnecessary updates while the 
+            // Main Menu is active.
+            UpdateEnd: 
             base.Update(gameTime);
         }
 
@@ -353,6 +364,11 @@ namespace TestGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            if (otherScreens[0].IsActive == true)
+            {
+                otherScreens[0].Draw(gameTime);
+                goto DrawEnd;
+            }
 
             spriteBatch.Begin();
             spriteBatch.Draw(ship, place, Color.White);
@@ -378,7 +394,9 @@ namespace TestGame
             user2.Draw(spriteBatch, guffin, baton, text);
             user3.Draw(spriteBatch, guffin, baton, text);
             user4.Draw(spriteBatch, guffin, baton, text);
-
+            
+            // goto marker to skip Drawing main game stuff while the Main Menu is running
+            DrawEnd: 
             spriteBatch.End();
 
             base.Draw(gameTime);
