@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,8 +28,8 @@ namespace TestGame
         private int stunCharge;
         int stunCountdown;
         bool stunIsActive;
-        
-         // constructor (each player will need their own Counter and Meter objects)
+
+        // constructor (each player will need their own Counter and Meter objects)
         public UserInterface(Player pl)
         {
             player = pl;
