@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,9 +13,18 @@ namespace TestGame
 {
     class Character: MovableGamePiece
     {
-        KeyboardState kState2;
-        Game1 gm1 = new Game1();
+        GamePadState gPadState;
+        Rectangle place;
 
+        // attributes for jumping
+        bool jumping = false;
+        int startY; // holds current Y position
+        int jumpSpeed; // will be used to act as 'gravity'
+
+        // for collision
+        // attributes to store Y cords in 
+        int playerY1;
+        int playerY2;
 
         private Player player;
         public Player Player
@@ -24,17 +33,66 @@ namespace TestGame
             set { player = value; }
         }
 
-        public Character()
+        public Rectangle Place
         {
-            
+            get { return place; }
+            set { place = value; }
         }
 
-        public void Move()
+        public Character(Player pl)
         {
-            kState2 = Keyboard.GetState();
+            player = pl;
+            startY = place.Y;
+            jumpSpeed = 0;
+        }
 
-            if (kState2.IsKeyDown(Keys.A)) gm1.place.X -= 6;
-            if (kState2.IsKeyDown(Keys.D)) gm1.place.X += 6;
+        public void Move(List<Rectangle> walls)
+        {
+            gPadState = GamePad.GetState(player.Index);
+
+            if (gPadState.ThumbSticks.Left.X <= -.5f) place.X -= 6;
+            if (gPadState.ThumbSticks.Left.X >= .5f) place.X += 6;
+
+            // jumping     
+            if (jumping)
+            {
+                place.Y += jumpSpeed;
+                jumpSpeed += 1;
+                playerY1 = jumpSpeed;
+
+                foreach (Rectangle rect in walls)
+                {
+                    if (place.Intersects(rect))
+                    {
+                        jumpSpeed = 0;
+                        jumping = false;
+
+                        if (gPadState.IsButtonDown(Buttons.A))
+                        {
+                            jumping = true;
+                            jumpSpeed = -20;
+                        }
+
+                        while (place.Intersects(rect))
+                        {
+                            place.Y--;
+                        }
+                    }
+                    else
+                    {
+                        //jumpSpeed = playerY1;
+                        jumping = true;
+                    }
+                }
+            }
+            else
+            {
+                if (gPadState.IsButtonDown(Buttons.A))
+                {
+                    jumping = true;
+                    jumpSpeed = -20;
+                }
+            }
         }
 
 
@@ -43,16 +101,13 @@ namespace TestGame
             // will loose a macguffin when hit
         }
 
-
         public void Attack()
         {
             // attacks with stun baton
         }
 
-
         public void Jump()
         {
-            
         }
     }
 }
