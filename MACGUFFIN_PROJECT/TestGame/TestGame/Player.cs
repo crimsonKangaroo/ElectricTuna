@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,15 +13,17 @@ namespace TestGame
 {
     class Player
     {
-
         private int playerNum; // Player's number (1 - 4)
         private PlayerIndex playerIndex;
         private int macGuffinCount; // number of macGuffins collected
         Texture2D sprite;
-        
-        // Player color (for differentiating the sprites - this should just be a temporary  measure)
-        Color playerColor;
-              
+        Color playerColor; // color of a player (for drawing different characters) 
+
+        public PlayerIndex Index
+        {
+            get { return playerIndex; }
+        }
+
         public int PlayerNum
         {
             get { return playerNum; }
@@ -41,21 +43,31 @@ namespace TestGame
             get { return sprite; }
             set { sprite = value; }
         }
-        
-
         public Color PlayerColor
         {
             get { return playerColor; }
         }
 
-        // constructor
-
         public Player(int num, Color pColor)
         {
             playerNum = num;
             playerColor = pColor;
+
+            switch (playerNum)
+            {
+                case 1:
+                    playerIndex = PlayerIndex.One;
+                    return;
+                case 2:
+                    playerIndex = PlayerIndex.Two;
+                    return;
+                case 3:
+                    playerIndex = PlayerIndex.Three;
+                    return;
+                case 4:
+                    playerIndex = PlayerIndex.Four;
+                    return;
+            }
         }
-
-
     }
 }
